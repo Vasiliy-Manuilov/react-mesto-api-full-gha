@@ -1,0 +1,19 @@
+.page {
+  width: 100%;
+  /* выше растянули страницу максимально по ширине */
+  height: 100%;
+  /* выше растянули страницу максимально по высоте */
+  min-width: 320px;
+  margin: 0 auto;
+  font-family: "Inter", Arial, sans-serif;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* сглаживание шрифта */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  /* выше подгонка размера текста при изменении масштаба страницы */
+  text-rendering: optimizeLegibility;
+  /* выше определяет нужно ли применять к тексту кёрнинг и лигатуры */
+}

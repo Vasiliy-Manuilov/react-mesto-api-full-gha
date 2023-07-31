@@ -1,0 +1,16 @@
+.footer {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+@media (max-width: 920px) {
+  .footer {
+    max-width: 581px;
+  }
+}
+
+@media (max-width: 620px) {
+  .footer {
+    padding-left: 19px;
+  }
+}

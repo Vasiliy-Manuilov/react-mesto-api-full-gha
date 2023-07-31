@@ -1,0 +1,17 @@
+.card__button-like {
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/elements/Group.svg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 4px;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.card__button-like:hover {
+  opacity: 0.5;
+}
+
