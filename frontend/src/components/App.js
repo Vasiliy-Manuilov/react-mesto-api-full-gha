@@ -56,8 +56,7 @@ function App() {
   function handleLogin(email, password) {
     auth
       .loginUser(email, password)
-      .then((res) => {
-        localStorage.setItem('jwt', res.token);
+      .then(() => {
         setIsLoggedIn(true);
         setUserData(email);
         navigate('/', { replace: true });
@@ -73,25 +72,27 @@ function App() {
   }, []);
 
   const tokenCheck = () => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      auth
-        .getToken(jwt)
-        .then((res) => {
+    auth
+      .getToken()
+      .then((res) => {
+        if (res) {
           setIsLoggedIn(true);
-          setUserData(res.data.email);
+          setUserData(res.user.email);
           navigate('/', { replace: true });
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
+        } else {
+          setIsLoggedIn(false);
+        }
+      })
+      .catch((err) => {
+        setIsLoggedIn(false);
+        console.error(err);
+      });
   };
 
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([user, cards]) => {
-        setCurrentUser(user);
+        setCurrentUser(user.user);
         setCards(cards);
       })
       .catch((err) => {
@@ -131,8 +132,8 @@ function App() {
     setIsLoading(!isLoading);
     api
       .patchUserInfo(name, about)
-      .then((res) => {
-        setCurrentUser(res);
+      .then((user) => {
+        setCurrentUser(user);
         closeAllPopups();
       })
       .catch((err) => {
@@ -145,8 +146,8 @@ function App() {
     setIsLoading(!isLoading);
     api
       .patchAvatar(avatar)
-      .then((res) => {
-        setCurrentUser(res);
+      .then((user) => {
+        setCurrentUser(user);
         closeAllPopups();
       })
       .catch((err) => {
