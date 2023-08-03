@@ -72,24 +72,24 @@ function App() {
   }, []);
 
   const tokenCheck = () => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
     auth
       .getToken()
       .then((res) => {
-        if (res) {
           setIsLoggedIn(true);
           setUserData(res.user.email);
           navigate('/', { replace: true });
-        } else {
-          setIsLoggedIn(false);
-        }
       })
       .catch((err) => {
         setIsLoggedIn(false);
         console.error(err);
       });
+    }
   };
 
   useEffect(() => {
+    if (isLoggedIn) {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([info, cards]) => {
         setCurrentUser(info.user);
@@ -98,7 +98,8 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+    }
+  }, [isLoggedIn]);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i === currentUser._id);
