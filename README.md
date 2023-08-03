@@ -17,6 +17,6 @@
 
 IP-адрес 158.160.58.214
 
-Frontend https://...
+Frontend https://add-card-your-place.nomoreparties.co
 
-Backend https://...
+Backend https://add-card-your-place.nomoreparties.co
