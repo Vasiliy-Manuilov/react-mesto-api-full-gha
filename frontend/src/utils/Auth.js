@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:4000/";
+export const BASE_URL = "http://api.add-card-your-place.nomoreparties.co/";
 
 function checkResponse(res) {
   if (res.ok) {
