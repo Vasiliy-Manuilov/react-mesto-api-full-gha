@@ -15,7 +15,7 @@
 
 ## Ссылки на проект
 
-IPv4 158.160.58.214
+IP-адресс 158.160.58.214
 
 Frontend https://add-card-your-place.nomoreparties.co
 
