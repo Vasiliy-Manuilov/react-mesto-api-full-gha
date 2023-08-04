@@ -17,8 +17,12 @@ const app = express();
 app.use(cors({ origin: 'https://add-card-your-place.nomoreparties.co', credentials: true }));
 app.use(requestLogger);
 app.use(helmet());
-
 app.use(bodyParser.json());
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.post('/signup', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
