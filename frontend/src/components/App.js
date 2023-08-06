@@ -62,6 +62,9 @@ function App() {
         navigate('/', { replace: true });
       })
       .catch((err) => {
+        setIsInfoTooltipOpen(true);
+        setImageInfoToolTip(reject);
+        setTitleInfoToolTip('Что-то пошло не так! Попробуйте ещё раз.');
         console.error(err);
       });
   }
@@ -72,8 +75,6 @@ function App() {
   }, []);
 
   const tokenCheck = () => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
     auth
       .getToken()
       .then((res) => {
@@ -85,7 +86,6 @@ function App() {
         setIsLoggedIn(false);
         console.error(err);
       });
-    }
   };
 
   useEffect(() => {
