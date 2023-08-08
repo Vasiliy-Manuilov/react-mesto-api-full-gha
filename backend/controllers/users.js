@@ -122,7 +122,7 @@ const login = (req, res, next) => {
     .catch(next);
 };
 
-const logout = async (req, res, next) => {
+const logout = (req, res, next) => {
   try {
     res.clearCookie('jwt');
     return res.send({ message: 'Выход выполнен' });
