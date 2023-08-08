@@ -38,3 +38,13 @@ export function getToken() {
     credentials: 'include'
   }).then(checkResponse);
 }
+
+export function logout() {
+  return fetch(`${BASE_URL}signout`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: 'include'
+  }).then(checkResponse);
+}

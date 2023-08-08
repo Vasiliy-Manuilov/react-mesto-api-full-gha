@@ -231,11 +231,17 @@ function App() {
   }
 
   function signOut() {
-    localStorage.removeItem('jwt');
-    navigate('/login-in');
+    auth
+    .logout()
+    .then(() => {
     setIsLoggedIn(false);
     setUserData('');
-  }
+    navigate('/sign-in');
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  };
 
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);

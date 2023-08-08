@@ -122,6 +122,15 @@ const login = (req, res, next) => {
     .catch(next);
 };
 
+const logout = async (req, res, next) => {
+  try {
+    res.clearCookie('jwt');
+    return res.send({ message: 'Выход выполнен' });
+  } catch (err) {
+    return next(err);
+  }
+};
+
 module.exports = {
   getUsers,
   getUser,
@@ -130,4 +139,5 @@ module.exports = {
   updateAvatar,
   getCurrentUser,
   login,
+  logout,
 };
